@@ -1,7 +1,6 @@
 var express = require("express");
 var app = express();
-var {autores} = require("./models");
-var {livros} = require("./models");
+var {produto} = require("./models");
 
 app.use (express.json());
 app.use (express.urlencoded({
@@ -11,3 +10,18 @@ app.use (express.urlencoded({
 app.listen(3007, function(){
     console.log("eba");
 });
+
+app.get("/", async function (req,res){
+    try{
+        const resultado = await produto.findAll();
+        res.json(resultado)
+    }catch (error) {
+        console.log(error)
+    }
+});
+
+app.post("/", async function (req,res){
+    const resultado = await produto.create(req.body);
+    res.json(resultado)
+});
+
