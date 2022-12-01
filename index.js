@@ -1,6 +1,9 @@
 var express = require("express");
 var app = express();
 var {produto} = require("./models");
+var cors =require('cors');
+
+app.use(cors());
 
 app.use (express.json());
 app.use (express.urlencoded({
