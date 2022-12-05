@@ -25,3 +25,8 @@ app.post("/", async function (req,res){
     res.json(resultado)
 });
 
+app.delete("/produto/:id",async function(req, res){
+    var resultado = await produto.destroy({where : {id:req.params.id}});
+    res.json(resultado)
+});
+
