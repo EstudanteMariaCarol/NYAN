@@ -23,6 +23,11 @@ app.get("/", async function (req,res){
     }
 });
 
+app.get("/produto/:id", async function(req, res){
+    const resultado = await produto.findByPk(id);
+    res.json(resultado)
+})
+
 app.post("/", async function (req,res){
     const resultado = await produto.create(req.body);
     res.json(resultado)
